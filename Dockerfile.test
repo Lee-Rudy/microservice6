@@ -1,0 +1,32 @@
+FROM python:3.13-slim
+
+WORKDIR /app
+
+ENV POETRY_REQUESTS_TIMEOUT=600 \
+    POETRY_NO_INTERACTION=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir poetry
+
+# On copie le pyproject depuis le dossier project
+COPY project/pyproject.toml ./
+
+RUN poetry config virtualenvs.create false && \
+    poetry install --no-root --with dev --no-interaction
+
+COPY project/main.py ./main.py
+COPY project/src ./src
+COPY project/tests ./tests
+
+ENV PYTHONPATH=/app:/app/src
+
+# CORRECTION DE LA CMD :
+# 1. On pointe sur --cov=src (là où est ton code)
+# 2. On ajoute --cov-report=xml (génère le fichier coverage.xml indispensable)
+CMD ["sh", "-c", "pytest -v --cov=src --cov-report=term-missing --cov-report=xml --cov-fail-under=80"]
