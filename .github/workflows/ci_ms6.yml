@@ -57,6 +57,11 @@ jobs:
             --cov-report=term \
             --junitxml=reports/tests.xml
 
+      - name: Debug coverage
+        run: |
+          echo "===== COVERAGE CONTENT ====="
+          head -40 reports/coverage.xml
+         
       # FLAKE8
       - name: Flake8 scan
         run: |
