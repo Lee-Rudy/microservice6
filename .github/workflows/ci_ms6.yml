@@ -51,20 +51,32 @@ jobs:
           PYTHONPATH: src
         run: |
           mkdir -p reports
-            poetry run pytest -v \
+          poetry run pytest -v \
             --cov=src/project \
             --cov-report=xml:reports/coverage.xml \
             --cov-report=term \
             --junitxml=reports/tests.xml
 
-      - name: Debug coverage
+      # FIX COVERAGE PATH FOR SONARCLOUD DOCKER CONTEXT
+      - name: Fix coverage source path
         run: |
-          echo "===== COVERAGE CONTENT ====="
-          head -40 reports/coverage.xml
-         
+          sed -i "s|/home/runner/work/microservice6/microservice6/project|/github/workspace/project|g" reports/coverage.xml
+
+      - name: Debug coverage paths
+        run: |
+          echo "===== CURRENT DIRECTORY ====="
+          pwd
+
+          echo "===== COVERAGE SOURCES ====="
+          grep -n "<source>" reports/coverage.xml || true
+
+          echo "===== COVERAGE FILES ====="
+          grep -n "filename=" reports/coverage.xml | head -30 || true
+
       # FLAKE8
       - name: Flake8 scan
         run: |
+          set -o pipefail
           poetry run flake8 . --statistics | tee reports/flake8.txt
 
       # SNYK
@@ -77,21 +89,6 @@ jobs:
           snyk test --file=poetry.lock > reports/snyk-dependencies.txt || true
           snyk code test > reports/snyk-code.txt || true
 
-      - name: Debug coverage paths
-        run: |
-          echo "===== CURRENT DIRECTORY =====";
-          pwd
-
-          echo "===== PROJECT TREE ====="
-          find . -maxdepth 4 -type f | sort
-
-          echo "===== COVERAGE SOURCES ====="
-          grep -n "<source>" reports/coverage.xml || true
-
-          echo "===== COVERAGE FILES ====="
-          grep -n "filename=" reports/coverage.xml | head -30 || true
-        
-
       # SONARCLOUD
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v3
@@ -102,6 +99,7 @@ jobs:
 
       # ARTIFACTS
       - name: Upload reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: devsecops-reports
