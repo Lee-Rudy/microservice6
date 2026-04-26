@@ -1,13 +1,20 @@
 from __future__ import annotations
 
-from pydantic import BaseModel, Field
 from typing import List, Optional
+
+from pydantic import BaseModel, Field
 
 
 class SecondDegreDTO(BaseModel):
-    a: float = Field(..., description="Coefficient a de l'équation de second degré")
-    b: float = Field(..., description="Coefficient b de l'équation de second degré")
-    c: float = Field(..., description="Coefficient c de l'équation de second degré")
+    a: float = Field(
+        ..., description="Coefficient a de l'équation de second degré"
+    )
+    b: float = Field(
+        ..., description="Coefficient b de l'équation de second degré"
+    )
+    c: float = Field(
+        ..., description="Coefficient c de l'équation de second degré"
+    )
 
     class Config:
         schema_extra = {
@@ -21,8 +28,12 @@ class SecondDegreDTO(BaseModel):
 
 class SecondDegreResultDTO(BaseModel):
     discriminant: float = Field(..., description="Le discriminant de l'équation")
-    solutions: List[Optional[float]] = Field(..., description="Les solutions réelles de l'équation")
-    has_real_solutions: bool = Field(..., description="Indique si l'équation a des solutions réelles")
+    solutions: List[Optional[float]] = Field(
+        ..., description="Les solutions réelles de l'équation"
+    )
+    has_real_solutions: bool = Field(
+        ..., description="Indique si l'équation a des solutions réelles"
+    )
 
     class Config:
         schema_extra = {
@@ -32,4 +43,3 @@ class SecondDegreResultDTO(BaseModel):
                 "has_real_solutions": True
             }
         }
-

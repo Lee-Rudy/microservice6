@@ -23,7 +23,10 @@ def test_post_calculer_invalid_equation_returns_422():
 
 
 def test_post_calculer_invalid_payload_returns_422():
-    response = client.post("/degre/calculer", json={"a": "invalid", "b": 1, "c": 1})
+    response = client.post(
+        "/degre/calculer",
+        json={"a": "invalid", "b": 1, "c": 1},
+    )
 
     assert response.status_code == 422
 

@@ -39,7 +39,9 @@ class SecondDegre:
             raise ValueError(f"Le coefficient {name} ne peut pas être vide.")
 
         if not cls.COEFFICIENT_PATTERN.match(text):
-            raise ValueError(f"Le coefficient {name} doit être un nombre valide.")
+            raise ValueError(
+                f"Le coefficient {name} doit être un nombre valide."
+            )
 
         return float(text)
 
@@ -49,13 +51,17 @@ class SecondDegre:
             raise TypeError(f"Le coefficient {name} doit être un nombre.")
 
         if name == "a" and float(value) == 0:
-            raise ValueError("Le coefficient a ne peut pas être zéro pour une équation de second degré.")
+            raise ValueError(
+                "Le coefficient a ne peut pas être zéro pour une équation de second degré."
+            )
 
         return float(value)
 
     def _validate_equation(self) -> None:
         if self.a == 0:
-            raise ValueError("L'équation doit rester de second degré : a ne peut pas être nul.")
+            raise ValueError(
+                "L'équation doit rester de second degré : a ne peut pas être nul."
+            )
 
     def discriminant(self) -> float:
         return self.b * self.b - 4 * self.a * self.c

@@ -2,7 +2,9 @@ from __future__ import annotations
 
 from fastapi import FastAPI
 
-from project.controllers.second_degre_controller import router as seconddegre_controller
+from project.controllers.second_degre_controller import (
+    router as seconddegre_controller,
+)
 
 app = FastAPI(
     title="MS6 Service API",

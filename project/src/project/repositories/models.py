@@ -44,4 +44,6 @@ class DeltaModel(Base):
     )
 
     def __repr__(self) -> str:
-        return f"<DeltaModel(id={self.id}, a={self.coeff_a}, b={self.coeff_b}, c={self.coeff_c})>"
+        return (
+            f"<DeltaModel(id={self.id}, a={self.coeff_a}, b={self.coeff_b}, c={self.coeff_c})>"
+        )

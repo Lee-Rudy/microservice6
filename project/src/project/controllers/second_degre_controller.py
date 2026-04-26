@@ -22,7 +22,10 @@ def calculer_second_degre(payload: SecondDegreDTO) -> SecondDegreResultDTO:
     try:
         equation = SecondDegre(a=payload.a, b=payload.b, c=payload.c)
     except ValueError as e:
-        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=str(e))
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=str(e),
+        )
 
     discriminant = equation.discriminant()
     solutions = equation.solutions()
@@ -31,6 +34,5 @@ def calculer_second_degre(payload: SecondDegreDTO) -> SecondDegreResultDTO:
     return SecondDegreResultDTO(
         discriminant=discriminant,
         solutions=list(solutions),
-        has_real_solutions=has_real_solutions
+        has_real_solutions=has_real_solutions,
     )
-
