@@ -1,2 +1,5 @@
-# microservice6
-Dev 6ème microservice (poetry, python, SonarCloud, Snyk) + BC03 + EC03_partie1_partie2
+# Test Dockerfile.test :
+> docker build -f Dockerfile.test -t ms-auth-test . && docker run --rm ms-auth-test
+
+# Docker : lancer l'application :
+> docker compose up --build
