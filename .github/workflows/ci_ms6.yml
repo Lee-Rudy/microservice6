@@ -51,8 +51,8 @@ jobs:
           PYTHONPATH: src
         run: |
           mkdir -p reports
-          poetry run pytest -v \
-            --cov=src \
+            poetry run pytest -v \
+            --cov=src/project \
             --cov-report=xml:reports/coverage.xml \
             --cov-report=term \
             --junitxml=reports/tests.xml
@@ -61,10 +61,6 @@ jobs:
         run: |
           echo "===== COVERAGE CONTENT ====="
           head -40 reports/coverage.xml
-
-      - name: Fix coverage source path
-        run: |
-          sed -i "s|<source>src</source>|<source>/github/workspace/project/src</source>|" reports/coverage.xml
          
       # FLAKE8
       - name: Flake8 scan
@@ -78,7 +74,23 @@ jobs:
         run: |
           npm install -g snyk
           snyk auth $SNYK_TOKEN
-          snyk test --file=poetry.lock > reports/snyk.txt || true
+          snyk test --file=poetry.lock > reports/snyk-dependencies.txt || true
+          snyk code test > reports/snyk-code.txt || true
+
+      - name: Debug coverage paths
+        run: |
+          echo "===== CURRENT DIRECTORY =====";
+          pwd
+
+          echo "===== PROJECT TREE ====="
+          find . -maxdepth 4 -type f | sort
+
+          echo "===== COVERAGE SOURCES ====="
+          grep -n "<source>" reports/coverage.xml || true
+
+          echo "===== COVERAGE FILES ====="
+          grep -n "filename=" reports/coverage.xml | head -30 || true
+        
 
       # SONARCLOUD
       - name: SonarCloud Scan
