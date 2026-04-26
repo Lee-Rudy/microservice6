@@ -1,5 +1,3 @@
-import os
-
 from project.config import Settings
 
 

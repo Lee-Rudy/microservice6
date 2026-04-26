@@ -17,5 +17,6 @@ class Settings:
             "postgresql+psycopg://postgres:postgres@localhost:5432/db_ms6",
         )
 
+
 settings = Settings()
 

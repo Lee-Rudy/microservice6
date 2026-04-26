@@ -11,6 +11,7 @@ Logique métier d'une équation de second degré
 - on gère les cas sans solution réelle
 """
 
+
 class SecondDegre:
     COEFFICIENT_PATTERN = re.compile(r"^-?\d+(?:\.\d+)?$")
 
