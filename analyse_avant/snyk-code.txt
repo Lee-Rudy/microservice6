@@ -1,0 +1,19 @@
+
+Testing /home/runner/work/microservice6/microservice6/project ...
+
+
+╭───────────────────────────────────────────────────────────────────────────────╮
+│ Test Summary                                                                  │
+│                                                                               │
+│   Organization:                                                               │
+│   Test type:         Static code analysis                                     │
+│   Project path:      /home/runner/work/microservice6/microservice6/project    │
+│                                                                               │
+│   Total issues:   0                                                           │
+╰───────────────────────────────────────────────────────────────────────────────╯
+    
+💡 Tip
+
+   To view ignored issues, use the --include-ignores option.
+                                                            
+

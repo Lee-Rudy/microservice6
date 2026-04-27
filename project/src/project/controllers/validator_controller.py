@@ -12,7 +12,6 @@ router = APIRouter(tags=["validate"])
 
 @router.post(
     "/validate",
-    response_model=ValidationResponseDTO,
     status_code=status.HTTP_200_OK,
 )
 def validate(payload: SensorReadingDTO) -> ValidationResponseDTO:

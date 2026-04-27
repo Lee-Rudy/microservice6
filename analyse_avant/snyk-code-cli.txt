@@ -1,0 +1,19 @@
+
+Testing D:\MCCI\Information MCCI\Fil rouge M1\BC03\EC03P1_MI202628_UrbanHub ...
+
+
+╭─────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Test Summary                                                                                │
+│                                                                                             │
+│   Organization:      MI202628                                                               │
+│   Test type:         Static code analysis                                                   │
+│   Project path:      D:\MCCI\Information MCCI\Fil rouge M1\BC03\EC03P1_MI202628_UrbanHub    │
+│                                                                                             │
+│   Total issues:   0                                                                         │
+╰─────────────────────────────────────────────────────────────────────────────────────────────╯
+    
+💡 Tip
+
+   To view ignored issues, use the --include-ignores option.
+                                                            
+

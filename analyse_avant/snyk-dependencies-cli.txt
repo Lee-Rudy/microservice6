@@ -1,0 +1,13 @@
+
+ ERROR   Unspecified Error (SNYK-CLI-0000)
+                                                                                        
+                                                                                        
+           Testing D:\MCCI\Information MCCI\Fil rouge                                   
+           M1\BC03\EC03P1_MI202628_UrbanHub...                                          
+                                                                                        
+           Could not find the specified file: poetry.lock                               
+           Please check that it exists and try again.                                   
+
+Docs:    https://docs.snyk.io/scan-with-snyk/error-catalog#snyk-cli-0000 
+                                                                         
+ID:      urn:snyk:interaction:6dc721f4-e12a-47fa-b8bd-7de3877adba3 
