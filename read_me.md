@@ -3,3 +3,6 @@
 
 # Docker : lancer l'application :
 > docker compose up --build
+> docker compose start
+> docker compose stop
+> docker compose down

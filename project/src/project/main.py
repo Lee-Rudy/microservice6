@@ -2,9 +2,7 @@ from __future__ import annotations
 
 from fastapi import FastAPI
 
-from project.controllers.second_degre_controller import (
-    router as seconddegre_controller,
-)
+from project.controllers.validator_controller import router as validator_controller
 
 app = FastAPI(
     title="MS6 Service API",
@@ -12,7 +10,7 @@ app = FastAPI(
     description="Microservice 6",
 )
 
-app.include_router(seconddegre_controller)
+app.include_router(validator_controller)
 
 
 @app.get("/", tags=["system"])
