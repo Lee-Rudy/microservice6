@@ -31,4 +31,3 @@ def validate(payload: SensorReadingDTO) -> ValidationResponseDTO:
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
             detail=str(e),
         )
-
