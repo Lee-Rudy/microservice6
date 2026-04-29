@@ -14,14 +14,12 @@ router = APIRouter(tags=["validate"])
     "/validate",
     status_code=status.HTTP_200_OK,
 )
-
 # code avant la correction sonarcloud (ce code fonctionne)
 # @router.post(
 #     "/validate",
 #     response_model=ValidationResponseDTO,
 #     status_code=status.HTTP_200_OK,
 # )
-
 def validate(payload: SensorReadingDTO) -> ValidationResponseDTO:
     try:
         result = validate_sensor_reading(sensor=payload.sensor, value=payload.value)
