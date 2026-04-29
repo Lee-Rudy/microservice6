@@ -8,7 +8,6 @@ from project.domains.validator import InvalidValueError, validate_sensor_reading
 from project.dtos.validator_dto import SensorReadingDTO, ValidationResponseDTO
 
 router = APIRouter(tags=["validate"])
-
 # code avec la correction après sonarcloud
 @router.post(
     "/validate",
