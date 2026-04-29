@@ -8,10 +8,6 @@ project/src/project
 
 - à bien noter : quand tu vas écrire du code j'aimerai que tu n'ajoutes pas des fichiers .md et .txt et partout dans le projet je veux que tu ne mets pas des écritures avec des émojis ou des iconnographies , ton rôle est d'écrire le code en suivant les règles que je vais de donner ci dessous , et je veux du code simple , lisible, facile à comprendre et scalable, ici le code est en python avec poetry FastAPI
 
-- une fois le code en place , j'aimerai ensuite que tu mets en place les tests unitaires, intégrations et fonctionnel , ici l'objectif est de couvrir et de dépasser le coverage de 80% , j'ai déjà préparé le terrain pour cela 
-
-- il y a déjà du code d'exemple que tu peux t'inspirer et prendre comme référence pour écrire le nouveau code dans le dossier project , j'aimerai que tu supprimes tout les fichiers en premier pour remplacer avec le vrai projet , le code déjà existant me servait juste de base afin que tu comprennes bien ma structure , il a déjà aussi une base de donnée que tu vas utiliser dans project/database/db_ms6.sql tu vas utiliser la base de donnée pour les données
-
 - maintenant voici le contexte pour le projet :
 ce projet est un microservice , ici il doit exposer qu'un seul endpoint POST/validate , c'est une simulation dont des capteurs IoT envoie des données avec leur seuils de réference sur la qualité d'air
 exemple :
@@ -93,15 +89,3 @@ maintenant voici les instructions dont tu vas suivre à la lettre :
 - n'oublie pas d'utiliser des DTO dans dtos pour le data transfert object
 
 - et n'oublie pas de modifier main.py
-
-- ici nous n'aurons pas aussi besoin de config.py
-
----------------------------------------------
-Pour les tests unitaires + intégrations + fonctionnel (avec l'objectif de coverage supérieur à 80% que je vais vérifier sur Dockerfile.test ensuite)
-- voici d'abord les 4 tests fonctionnels dont tu dois ajouté afin qu'il soit scané dans sonarcloud
-test_normal : valeur < seuil modéré -> level='normal', valid=True
-test_moderate ; valeur entre seuil modéré et critique -> level ='moderate', valid=True
-test_critical : valeur >= seuil critique -> level='critical', valid = False
-test_inconnu : capteur non répertorié -> level='inconnu', valid=False
-
-- ensuite ajoute les tests unitaires et intégrations 

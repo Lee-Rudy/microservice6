@@ -1,0 +1,14 @@
+
+Testing /home/runner/work/microservice6/microservice6/project...
+
+Organization:      MI202628
+Package manager:   poetry
+Target file:       pyproject.toml
+Project name:      project
+Open source:       no
+Project path:      /home/runner/work/microservice6/microservice6/project
+Licenses:          enabled
+
+✔ Tested 25 dependencies for known issues, no vulnerable paths found.
+
+
